@@ -9,8 +9,8 @@ data Ciag = Ciag
         , przesuniecie :: Int
         } deriving (Eq, Show)
 
-cSzyfruj :: Ciag -> Ciag -> Ciag
-cSzyfruj (Ciag a b) = do let h = fmap (\x->fromEnum x)
-                        let h = fmap (\x->x+przesuniecie)
-                        let h = fmap (\x->toEnum x)
-                        Ciag (h, b)                        
+cSzyfruj :: Functor f => f Char -> Int -> f Char
+cSzyfruj a b = fmap (\x->chr ((ord x)+b)) a    
+
+cDeszyfruj :: Functor f => f Char -> Int -> f Char
+cDeszyfruj a b = fmap (\x->chr ((ord x)-(b `mod` 30))) a

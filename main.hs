@@ -11,16 +11,15 @@ encoding = do
     putStrLn (liczbaKodujaca)
     let num = read liczbaKodujaca :: Int
     let length1 = length txt
-    putStr "Dlugosc naszego ciagu: "
+    putStr "__Dlugosc naszego ciagu: "
     print length1
 
-    let g = fmap (\x->ord x) txt
+    let g = cSzyfruj txt num
     print g
-    let g1 = fmap (\x-> x + num) g 
-    print g1
-    let g2 = fmap (\x->chr x) g1
-    print g2
-    
+
+cSzyfruj a b = fmap (\x->chr ((ord x)+(b `mod` 30))) a
+
+cDeszyfruj a b = fmap (\x->chr ((ord x)-(b `mod` 30))) a
 
 tellsIfOnlyLetter [] = True
 tellsIfOnlyLetter (x:xs) = 
