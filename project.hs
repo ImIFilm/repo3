@@ -12,4 +12,4 @@ encoding = do
     let lista = map (\x -> [x]) txt --liata cyfr
     putStr "Tak wyglada nasza lista: "
     print lista
-
+    
