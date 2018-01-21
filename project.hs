@@ -7,22 +7,22 @@ encoding = do
     putStrLn (txt)
     putStrLn "Podaj liczbe kodujaca: "
     liczbaKodujaca <- getLine
-    putStr "Wczytano: "
+    putStr "Wczytano liczbe kodujaca: "
     putStrLn (liczbaKodujaca)
-
-
     let num = read liczbaKodujaca :: Int
     let length1 = length txt
     putStr "Dlugosc naszego ciagu: "
     print length1
-    let lista = map (\x -> [x]) txt --liata cyfr
-    putStr "Tak wyglada nasza lista: "
-    print lista
 
-    let lista2 = fmap(\x -> read x::Int)lista
-    putStr "Tak wyglada nasza lista jako lista Intów: "
-    print lista2
+    let g = fmap (\x->fromEnum x) txt
+    --print g
+    let g1 = fmap (\x-> x + num) g 
+    --print g1
+    let g2 = fmap (\x->chr x) g1
+    print g2
+    
 
-    let lista3 = fmap(\x -> (x + num) `mod`  10)lista2
-    putStr "Tak wyglada nasza lista Intów po zakodowaniu: "
-    print lista3
+tellsIfOnlyLetter [] = True
+tellsIfOnlyLetter (x:xs) = 
+    if isLetter x then tellsIfOnlyLetter (xs)
+    else False
