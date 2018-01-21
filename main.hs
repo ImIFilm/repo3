@@ -14,10 +14,10 @@ encoding = do
     putStr "Dlugosc naszego ciagu: "
     print length1
 
-    let g = fmap (\x->fromEnum x) txt
-    --print g
+    let g = fmap (\x->ord x) txt
+    print g
     let g1 = fmap (\x-> x + num) g 
-    --print g1
+    print g1
     let g2 = fmap (\x->chr x) g1
     print g2
     
