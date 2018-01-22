@@ -14,3 +14,5 @@ cSzyfruj a b = fmap (\x->chr ((ord x)+b)) a
 
 cDeszyfruj :: Functor f => f Char -> Int -> f Char
 cDeszyfruj a b = fmap (\x->chr ((ord x)-(b `mod` 30))) a
+
+cProbuj a = [j | i <- [1..29], j<-(cDeszyfruj a i)]

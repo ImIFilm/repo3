@@ -1,3 +1,4 @@
+module Enc (encoding, cSzyfruj, cDeszyfruj, cProbuj) where
 import Data.Char
 
 -- | To jest nasza glowna funkcja
@@ -26,7 +27,7 @@ cSzyfruj a b = fmap (\x->chr ((ord x)+(b `mod` 30))) a
 
 cDeszyfruj a b = fmap (\x->chr ((ord x)-(b `mod` 30))) a
 
-cProbuj a = [j | i <- [1..30], j<-(cDeszyfruj a i)]
+cProbuj a = [j | i <- [1..29], j<-(cDeszyfruj a i)]
 
 tellsIfOnlyLetter [] = True
 tellsIfOnlyLetter (x:xs) = 
