@@ -17,9 +17,16 @@ encoding = do
     let g = cSzyfruj txt num
     print g
 
+
+reverse' :: [a] -> [a]
+reverse' []=[]
+reverse' (x:xs) = reverse' xs ++ [x]
+
 cSzyfruj a b = fmap (\x->chr ((ord x)+(b `mod` 30))) a
 
 cDeszyfruj a b = fmap (\x->chr ((ord x)-(b `mod` 30))) a
+
+cProbuj a = [j | i <- [1..30], j<-(cDeszyfruj a i)]
 
 tellsIfOnlyLetter [] = True
 tellsIfOnlyLetter (x:xs) = 
