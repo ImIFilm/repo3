@@ -2,6 +2,7 @@ module Main where
 
 import Lib
 import Ciag
+import Lista
 
 main :: IO ()
 main = do {
@@ -18,3 +19,5 @@ main = do {
     ; putStr "SZUKAJ CO TO: "
     ; wyswietlPropozycje l1
     }
+
+foo = (+1)

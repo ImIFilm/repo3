@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">{-|
+Module      : Lib
+Description : Pierwszy modul
+Copyright   : Copyright (c) 2017, Piotr Kedziora
+License     : MIT
+Maintainer  : imipulawy@gmail.com
+Stability   : experimental
+Portability : portable
+
+a tu troche wiecej powinno byc napisane o tym module, ale nic wiecej nie napisze, tylko pokaze to @some markup@
+-}</span><span>
+</span><a name="line-12"></a><span>
+</span><a name="line-13"></a><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Lib</span><span>
+</span><a name="line-14"></a><span>    </span><span class="hs-special">(</span><span> </span><span>
+</span><a name="line-15"></a><span>    </span><span class="hs-comment">-- * Some functions    </span><span>
+</span><a name="line-16"></a><span>    </span><a href="Lib.html#someFunc"><span class="hs-identifier hs-var">someFunc</span></a><span class="hs-special">,</span><span> </span><a href="Lib.html#cSzyfruj2"><span class="hs-identifier hs-var">cSzyfruj2</span></a><span>
+</span><a name="line-17"></a><span>    </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><a name="line-18"></a><span> </span><span>
+</span><a name="line-19"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Data</span><span class="hs-operator">.</span><span class="hs-identifier">Char</span><span>        </span><span>
+</span><a name="line-20"></a><span>
+</span><a name="line-21"></a><span class="hs-comment">-- * To jest naglowek</span><span>
+</span><a name="line-22"></a><span>
+</span><a name="line-23"></a><span class="hs-comment">-- |wyswietla nam wynik naszego szyfrowania</span><span>
+</span><a name="line-24"></a><span class="hs-identifier">someFunc</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">IO</span><span class="hs-special">(</span><span class="hs-special">)</span><span> </span><span class="hs-comment">-- ^ wejscie/wyjscie</span><span>
+</span><a name="line-25"></a><a name="someFunc"><a href="Lib.html#someFunc"><span class="hs-identifier">someFunc</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier hs-var">print</span><span> </span><span class="hs-special">(</span><a href="Lib.html#cSzyfruj2"><span class="hs-identifier hs-var">cSzyfruj2</span></a><span> </span><span class="hs-string">&quot;asd&quot;</span><span> </span><span class="hs-number">1</span><span class="hs-special">)</span><span>
+</span><a name="line-26"></a><span>
+</span><a name="line-27"></a><span class="hs-identifier">cSzyfruj2</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">Functor</span><span> </span><a href="#local-6989586621679022309"><span class="hs-identifier hs-type">f</span></a><span> </span><span class="hs-glyph">=&gt;</span><span> </span><a href="#local-6989586621679022309"><span class="hs-identifier hs-type">f</span></a><span> </span><span class="hs-identifier hs-type">Char</span><span> </span><span class="hs-comment">-- ^ ciag wejsciowy</span><span>
+</span><a name="line-28"></a><span>            </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-identifier hs-type">Int</span><span> </span><span class="hs-comment">-- ^ liczba szyfrujaca</span><span>
+</span><a name="line-29"></a><span>            </span><span class="hs-glyph">-&gt;</span><span> </span><a href="#local-6989586621679022309"><span class="hs-identifier hs-type">f</span></a><span> </span><span class="hs-identifier hs-type">Char</span><span> </span><span class="hs-comment">-- ^ ciag znakow</span><span>
+</span><a name="line-30"></a><a name="cSzyfruj2"><a href="Lib.html#cSzyfruj2"><span class="hs-identifier">cSzyfruj2</span></a></a><span> </span><a name="local-6989586621679022310"><a href="#local-6989586621679022310"><span class="hs-identifier">a</span></a></a><span> </span><a name="local-6989586621679022311"><a href="#local-6989586621679022311"><span class="hs-identifier">b</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-identifier hs-var">fmap</span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><a name="local-6989586621679022312"><a href="#local-6989586621679022312"><span class="hs-identifier">x</span></a></a><span class="hs-glyph">-&gt;</span><span class="hs-identifier hs-var">chr</span><span> </span><span class="hs-special">(</span><span class="hs-special">(</span><span class="hs-identifier hs-var">ord</span><span> </span><a href="#local-6989586621679022312"><span class="hs-identifier hs-var">x</span></a><span class="hs-special">)</span><span class="hs-operator hs-var">+</span><a href="#local-6989586621679022311"><span class="hs-identifier hs-var">b</span></a><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><a href="#local-6989586621679022310"><span class="hs-identifier hs-var">a</span></a><span>
+</span><a name="line-31"></a></pre></body></html>

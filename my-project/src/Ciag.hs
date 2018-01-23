@@ -28,7 +28,7 @@ cSzyfruj :: Functor f =>
     f Char -- ^ ciąg wejsciowy
     -> Int -- ^ klucz
     -> f Char -- ^ ciąg wyjsciowy
-cSzyfruj a b = fmap (\x->chr ((ord x)+b)) a    
+cSzyfruj a b = fmap (\x->chr ((ord x)+(b `mod` 30))) a    
 
 -- |wyswietla nam wynik naszego szyfrowania
 wyswietlSzyfrowanie :: (Functor f, Show (f Char)) => f Char -- ^ ciąg wejsciowy
