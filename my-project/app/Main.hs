@@ -1,18 +1,19 @@
 module Main where
 
-import Lib
 import Ciag
 import Lista
+import Wektor
 
 main :: IO ()
+
 main = do {
-    putStrLn "PODAJ CIAG DO ZASZYFROWANIA: "
+    putStrLn "PODAJ STRING DO ZASZYFROWANIA: "
     ; line <- getLine
     ; putStrLn "PODAJ KLUCZ: "
     ; keyIn <- getLine
     ; putStrLn ("WCZYTANO CIAG: "++line)
-    ; let key = read keyIn :: Int
     ; putStrLn ("WCZYTANO KLUCZ: "++keyIn)
+    ; let key = read keyIn :: Int
     ; putStr "SZYFR: "
     ; wyswietlSzyfrowanie line key
     ; let l1 = cSzyfruj line key

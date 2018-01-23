@@ -30,10 +30,17 @@ cProbuj :: [Char] -> [Char]
 wyswietlPropozycje :: [Char] -> IO ()
 
 
--- | a tu troche wiecej powinno byc napisane o tym module, ale nic wiecej
---   nie napisze, tylko pokaze to <tt>some markup</tt>
-module Lib
+-- | cala magia tkwi w funkcjach <tt>lSzyfruj</tt> i <tt>lDeszyfruj</tt>
+module Lista
+
+-- | szyfruje ciag cyfr
+lSzyfruj :: Num a => [a] -> [a] -> [a]
 
 -- | wyswietla nam wynik naszego szyfrowania
-someFunc :: IO ()
-cSzyfruj2 :: Functor f => f Char -> Int -> f Char
+wyswietlSzyfrowanieLista :: (Num a, Show a) => [a] -> [a] -> IO ()
+
+-- | deszyfruje ciag cyfr
+lDeszyfruj :: Num a => [a] -> [a] -> [a]
+
+-- | wyswietla wynik deszyfracji listy
+wyswietlDeszyfrowanieLista :: (Num a, Show a) => [a] -> [a] -> IO ()

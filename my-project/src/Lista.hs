@@ -22,35 +22,25 @@ module Lista
 import Data.Char        
 
 -- |szyfruje ciag cyfr
+lSzyfruj :: Num a => [a] -- ^ lista na wejsciu
+    -> [a] -- ^ klucz
+    -> [a] -- ^ wynik
 lSzyfruj x y = zipWith (+) x (take (length x) (cycle y))
 
 -- |wyswietla nam wynik naszego szyfrowania
+wyswietlSzyfrowanieLista :: (Num a, Show a) => [a] -- ^ lista na wejsciu
+    -> [a] -- ^ klucz
+    -> IO () -- ^ IO
 wyswietlSzyfrowanieLista a b = print (lSzyfruj a b)
 
 -- |deszyfruje ciag cyfr
+lDeszyfruj :: Num a => [a] -- ^ lista zaszyfrowana
+    -> [a] -- ^ klucz
+    -> [a] -- ^ lista oryginalna
 lDeszyfruj x y = zipWith (-) x (take (length x) (cycle y))
 
 -- |wyswietla wynik deszyfracji listy
+wyswietlDeszyfrowanieLista :: (Num a, Show a) => [a] -- ^ lista zaszyfrowana
+    -> [a] -- ^ klucz
+    -> IO () -- ^ IO
 wyswietlDeszyfrowanieLista a b = print (lDeszyfruj a b)
-
-{-
-
--- |wyswietla nam wynik naszego szyfrowania
-wyswietlSzyfrowanieLista :: (Functor f, Show (f Char)) => f Char -- ^ ciąg wejsciowy
-    -> Int -- ^ klucz szyfrujący
-    -> IO () -- ^ IO
-wyswietlSzyfrowanieLista a b = print (cSzyfruj a b)
-
--- |deszyfruje ciąg znaków
-lDeszyfruj :: Functor f => f Char -- ^ zaszyfrowany ciąg
-    -> Int -- ^ klucz szyfrujący
-    -> f Char -- ^ oryginalny ciąg
-lDeszyfruj a b = fmap (\x->chr ((ord x)-(b `mod` 30))) a
-
--- |wyswietla nam wynik naszego deszyfrowania
-wyswietlDeszyfrowanieLista :: (Functor f, Show (f Char)) => f Char -- ^ ciąg zaszyfrowany
-    -> Int -- ^ klucz szyfrujący
-    -> IO () -- ^ IO
-wyswietlDeszyfrowanieLista a b = print (cDeszyfruj a b)
-
--}
