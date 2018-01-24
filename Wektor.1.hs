@@ -19,7 +19,7 @@ module Wektor
     --, wyswietlZdeszyfrowanieWektor
      ) where
 
-import Data.Vector   
+import Data.Vector as V
 
 -- | szyfruje nasz wetkor
 wSzyfruj x = Data.Vector.map ((+)(Data.Vector.length x)) x
