@@ -45,39 +45,39 @@ konsolaSzyfr x = do
 konsolaSzyfrCiag :: IO ()
 konsolaSzyfrCiag = do
       putStrLn "Podaj string do zaszyfrowania: "
-      ; line <- getLine
-      ; putStrLn "Podaj klucz: "
-      ; keyIn <- getLine
-      ; putStrLn ("Wczytano ciąg: " ++ line)
-      ; putStrLn ("Wczytano klucz: " ++ keyIn)
-      ; let key = read keyIn :: Int
-      ; putStr "Zaszyfrowany ciąg: "
-      ; Ciag.wyswietlSzyfrowanie line key
-
-
-konsolaSzyfrLista :: IO ()
-konsolaSzyfrLista = do
-      putStrLn "PODAJ LISTĘ DO ZASZYFROWANIA: "
-      line <- getLine
-      putStrLn "PODAJ KLUCZ (jako listę): "
-      keyIn <- getLine
-      putStrLn ("WCZYTANO CIAG: " ++ line)
-      putStrLn ("WCZYTANO KLUCZ: " ++ keyIn)
-      let key = read keyIn :: [Int]
-      let lin = read line :: [Int]
-      putStr "SZYFR: "
-      wyswietlSzyfrowanieLista lin key
-
-konsolaSzyfrCezar :: IO ()
-konsolaSzyfrCezar = do
-      putStrLn "Podaj String do zaszyfrowania szyfrem Cezara: "
       line <- getLine
       putStrLn "Podaj klucz: "
       keyIn <- getLine
       putStrLn ("Wczytano ciąg: " ++ line)
       putStrLn ("Wczytano klucz: " ++ keyIn)
       let key = read keyIn :: Int
-      putStr "zaszyfrowany ciąg: "
+      putStr "Zaszyfrowany ciąg: "
+      Ciag.wyswietlSzyfrowanie line key
+
+
+konsolaSzyfrLista :: IO ()
+konsolaSzyfrLista = do
+      putStrLn "Podaj listę do zaszyfrowania: "
+      line <- getLine
+      putStrLn "Podaj klucz (jako listę): "
+      keyIn <- getLine
+      putStrLn ("Wczytano ciąg: " ++ line)
+      putStrLn ("Wczytano klucz: " ++ keyIn)
+      let key = read keyIn :: [Int]
+      let lin = read line :: [Int]
+      putStr "Zaszyfrowana lista: "
+      wyswietlSzyfrowanieLista lin key
+
+konsolaSzyfrCezar :: IO ()
+konsolaSzyfrCezar = do
+      putStrLn "Podaj ciąg do zaszyfrowania szyfrem Cezara: "
+      line <- getLine
+      putStrLn "Podaj klucz: "
+      keyIn <- getLine
+      putStrLn ("Wczytano ciąg: " ++ line)
+      putStrLn ("Wczytano klucz: " ++ keyIn)
+      let key = read keyIn :: Int
+      putStr "Zaszyfrowany ciąg: "
       Cezar.wyswietlSzyfrowanie line key
 
 konsolaSzyfrVig :: IO ()
@@ -98,7 +98,7 @@ konsolaSzyfrVig = do
 
 konsolaDeszyfrCiag :: IO ()
 konsolaDeszyfrCiag = do
-       putStrLn "Podaj String do zaszyfrowania"
+       putStrLn "Podaj String do odszyfrowania"
        line <- getLine
        putStrLn "Podaj klucz: "
        keyIn <- getLine
@@ -114,15 +114,44 @@ konsolaDeszyfrCiag = do
 
 konsolaDeszyfrLista :: IO ()
 konsolaDeszyfrLista = do
-      putStrLn "TODO"
+      putStrLn "Podaj listę do odszyfrowania: "
+      line <- getLine
+      putStrLn "Podaj klucz (jako listę): "
+      keyIn <- getLine
+      putStrLn ("Wczytano listę: " ++ line)
+      putStrLn ("Wczytano klucz: " ++ keyIn)
+      let key = read keyIn :: [Int]
+      let lin = read line :: [Int]
+      putStr "Zaszyfrowana lista: "
+      wyswietlDeszyfrowanieLista lin key
 
 konsolaDeszyfrCezar :: IO ()
 konsolaDeszyfrCezar = do
-      putStrLn "TODO"
+      putStrLn "Podaj ciąg do odszyfrowania szyfrem Cezara: "
+      line <- getLine
+      putStrLn "Podaj klucz: "
+      keyIn <- getLine
+      putStrLn ("Wczytano ciąg: " ++ line)
+      putStrLn ("Wczytano klucz: " ++ keyIn)
+      let key = read keyIn :: Int
+      putStr "Odszyfrowany ciąg: "
+      Cezar.wyswietlDeszyfrowanie line key
 
 konsolaDeszyfrVig :: IO ()
 konsolaDeszyfrVig = do
-      putStrLn "TODO"
+      putStrLn "Podaj String do odszyfrowania szyfrem Vigenera"
+      line <- getLine
+      putStrLn "Podaj klucz: "
+      keyIn <- getLine
+      putStrLn ("Wczytano ciąg: " ++ line)
+      putStrLn ("Wczytano klucz: " ++ keyIn)
+      if (Vigenere.sprawdzCzyDobryKlucz keyIn) then
+        do
+          putStr "zaszyfrowany ciąg: "
+          Vigenere.wyswietlDeszyfrowanie line keyIn
+      else
+        do
+          putStrLn "Błędny klucz :("
 
 plikProg :: IO()
 plikProg = do
