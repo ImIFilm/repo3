@@ -120,5 +120,61 @@ konsolaDeszyfrVig line keyIn = do
 
 plikProg :: Int -> Int -> IO()
 plikProg cmd szyfr = do
+      putStrLn "Podaj klucz: "
+      keyIn <- getLine
+      putStrLn ("Wczytano klucz: " ++ keyIn)
       inpStr <- readFile "do_zaszyfrowania.txt"
-      writeFile "zakodowane.txt" (Cezar.szyfrujCiag inpStr 12)
+      case (szyfr, cmd) of
+        (1,1) -> plikSzyfrCiag inpStr keyIn
+        (2,1) -> putStrLn "Nie wspierane."
+        (3,1) -> plikSzyfrCezar inpStr keyIn
+        (4,1) -> plikSzyfrVig inpStr keyIn
+        (1,2) -> plikDeszyfrCiag inpStr keyIn
+        (2,2) -> putStrLn "Nie wspierane."
+        (3,2) -> plikDeszyfrCezar inpStr keyIn
+        (4,2) -> plikDeszyfrVig inpStr keyIn
+        otherwise -> putStrLn "Nie rozpoznano polecenia."
+
+plikSzyfrCiag :: [Char] -> [Char] -> IO ()
+plikSzyfrCiag line keyIn = do
+        let key = read keyIn :: Int
+        writeFile "zakodowane.txt" (Ciag.cSzyfruj line key)
+        putStrLn "Zaszyfrowano ciąg."
+
+plikSzyfrCezar ::  [Char] -> [Char] -> IO ()
+plikSzyfrCezar line keyIn = do
+      let key = read keyIn :: Int
+      writeFile "zakodowane.txt" (Cezar.szyfrujCiag line key)
+      putStrLn "Zaszyfrowano ciąg."
+
+plikSzyfrVig ::  [Char] -> [Char] -> IO ()
+plikSzyfrVig line keyIn = do
+      if (Vigenere.sprawdzCzyDobryKlucz keyIn) then
+        do
+          writeFile "zakodowane.txt" (Vigenere.szyfrujCiag line keyIn)
+          putStrLn "Zaszyfrowano ciąg."
+      else
+        do
+          putStrLn "Błędny klucz :("
+
+plikDeszyfrCiag :: [Char] -> [Char] -> IO ()
+plikDeszyfrCiag line keyIn = do
+      let key = read keyIn :: Int
+      writeFile "odkodowane.txt" (Ciag.cDeszyfruj line key)
+      putStrLn "Odszyfrowano ciąg."
+
+plikDeszyfrCezar ::  [Char] -> [Char] -> IO ()
+plikDeszyfrCezar line keyIn = do
+      let key = read keyIn :: Int
+      writeFile "odkodowane.txt" (Cezar.deszyfrujCiag line key)
+      putStrLn "Odszyfrowano ciąg."
+
+plikDeszyfrVig ::  [Char] -> [Char] -> IO ()
+plikDeszyfrVig line keyIn = do
+      if (Vigenere.sprawdzCzyDobryKlucz keyIn) then
+        do
+          writeFile "odkodowane.txt" (Vigenere.deszyfrujCiag line keyIn)
+          putStrLn "Zaszyfrowano ciąg."
+      else
+        do
+          putStrLn "Błędny klucz :("
