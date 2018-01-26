@@ -33,5 +33,3 @@ main = do {
     ; putStr "SZYFR: "
     ; wyswietlSzyfrowanieLista lin key
     }
-
-foo = (+1)
