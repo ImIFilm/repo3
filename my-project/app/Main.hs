@@ -4,6 +4,8 @@ import Ciag
 import Lista
 import Cezar
 import Vigenere
+import System.IO
+import System.Environment
 
 main :: IO ()
 main = do
@@ -155,4 +157,5 @@ konsolaDeszyfrVig = do
 
 plikProg :: IO()
 plikProg = do
-      putStrLn "Not implemented :("
+      inpStr <- readFile "do_zaszyfrowania.txt"
+      writeFile "zakodowane.txt" (Cezar.szyfrujCiag inpStr 12)
