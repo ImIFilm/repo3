@@ -3,6 +3,7 @@ module Main where
 import Ciag
 import Lista
 import Cezar
+import Vigenere
 
 main :: IO ()
 
@@ -15,12 +16,12 @@ main = do {
     ; putStrLn ("WCZYTANO KLUCZ: "++keyIn)
     ; let key = read keyIn :: Int
     ; putStr "SZYFR: "
-    ; wyswietlSzyfrowanie line key
+    ; Ciag.wyswietlSzyfrowanie line key
     ; let l1 = cSzyfruj line key
     ; putStr "SZUKAJ CO TO: "
     ; wyswietlPropozycje l1
     ; putStrLn "_____________ "
-    
+
     ; putStrLn "PODAJ LISTĘ DO ZASZYFROWANIA: "
     ; line <- getLine
     ; putStrLn "PODAJ KLUCZ (jako listę): "
