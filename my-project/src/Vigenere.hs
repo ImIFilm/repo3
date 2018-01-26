@@ -24,7 +24,7 @@ module Vigenere
     , Vigenere.wyswietlDeszyfrowanie
     ) where
 
-import Data.Char
+import Data.Char(toLower)
 import Cezar
 import Alfabet
 
