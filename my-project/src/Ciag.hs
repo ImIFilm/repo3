@@ -21,14 +21,14 @@ module Ciag
     , wyswietlPropozycje
      ) where
 
-import Data.Char        
+import Data.Char
 
 -- |szyfruje ciag znaków
 cSzyfruj :: Functor f =>
     f Char -- ^ ciąg wejsciowy
     -> Int -- ^ klucz
     -> f Char -- ^ ciąg wyjsciowy
-cSzyfruj a b = fmap (\x->chr ((ord x)+(b `mod` 30))) a    
+cSzyfruj a b = fmap (\x->chr ((ord x)+(b `mod` 30))) a
 
 -- |wyswietla nam wynik naszego szyfrowania
 wyswietlSzyfrowanie :: (Functor f, Show (f Char)) => f Char -- ^ ciąg wejsciowy
@@ -50,10 +50,10 @@ wyswietlDeszyfrowanie a b = print (cDeszyfruj a b)
 
 -- |próbuje nam pomoc w rozszyfrowaniu
 cProbuj :: [Char] -- ^ ciag zaszyfrowany
-    -> [Char] -- ^ różne kombinacje
-cProbuj a = [j | i <- [1..29], j<-(cDeszyfruj a i)]
-
+    -> [[Char]] -- ^ różne kombinacje
+--cProbuj a = [j | i <- [1..29], j<-(cDeszyfruj a i)]
+cProbuj a = map (\x -> cDeszyfruj a x) [1..29]
 -- |wyswietla nam pomoc w wyszukaniu oryginalu
 wyswietlPropozycje :: [Char] -- ^ ciąg zaszyfrowany
     -> IO () -- ^ IO
-wyswietlPropozycje a = print (cProbuj a)
+wyswietlPropozycje a = putStrLn (unlines (cProbuj a))
